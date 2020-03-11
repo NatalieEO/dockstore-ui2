@@ -55,7 +55,7 @@ jobs:
           command: bash -i -c 'npm run lint'
       - run:
           name: Build
-          command: bash -i -c 'node --max-old-space-size=4096 $(which npm) run build.prod'
+          command: bash -i -c 'node --max_old_space_size=4096 $(which npm) run build.prod'
       - run:
           name: Install codecov
           command: bash -i -c 'npm i --no-save codecov'
