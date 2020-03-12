@@ -7,7 +7,7 @@ executors:
       - image: circleci/buildpack-deps:18.04-browsers
         environment:
           JAVA_TOOL_OPTIONS: -Xmx2g # Java can read cgroup. Sadly the cgroup in CircleCI is wrong. Have to manually set. Using 1/2 memory as heap.
-          NODE_OPTIONS: --max-old-space-size=3000
+          NODE_OPTIONS: --max-old-space-size=2048
       - image: circleci/postgres:11.6-alpine-ram
         environment:
           POSTGRES_USER: postgres
@@ -56,7 +56,7 @@ jobs:
           command: bash -i -c 'npm run lint'
       - run:
           name: Build
-          command: bash -i -c 'node --max-old-space-size=3000 $(which npm) run build.prod'
+          command: bash -i -c 'node --max-old-space-size=2048 $(which npm) run build.prod'
       - run:
           name: Install codecov
           command: bash -i -c 'npm i --no-save codecov'
