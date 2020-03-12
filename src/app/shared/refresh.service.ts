@@ -98,13 +98,6 @@ export class RefreshService {
   refreshAllTools(userId: number): void {
     const message = 'Refreshing all tools';
     this.alertService.start(message);
-    this.usersService.refresh(userId).subscribe(
-      response => {
-        this.containerService.setTools(response);
-        this.alertService.detailedSuccess();
-      },
-      error => this.alertService.detailedError(error)
-    );
   }
 
   /**
@@ -115,13 +108,6 @@ export class RefreshService {
   refreshAllWorkflows(userId: number): void {
     const message = 'Refreshing all workflows';
     this.alertService.start(message);
-    this.usersService.refreshWorkflows(userId).subscribe(
-      response => {
-        this.workflowService.setWorkflows(response);
-        this.alertService.detailedSuccess();
-      },
-      error => this.alertService.detailedError(error)
-    );
   }
 
   /**
